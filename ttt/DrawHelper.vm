@@ -28,50 +28,131 @@ call Screen.drawCircle 3
 pop temp 0
 push constant 0
 return
-function DrawHelper.drawX 1
+function DrawHelper.drawX 0
+push argument 0
+push argument 1
+push argument 0
+push argument 2
+add
+push argument 1
+push argument 2
+add
 push argument 3
-push constant 2
-call Math.divide 2
-neg
-pop local 0
 push argument 4
+call DrawHelper.drawLine 6
+pop temp 0
+push argument 0
+push argument 1
+push argument 2
+add
+push argument 0
+push argument 2
+add
+push argument 1
+push argument 3
+push argument 4
+call DrawHelper.drawLine 6
+pop temp 0
+push constant 0
+return
+function DrawHelper.drawLine 1
+push constant 0
+pop local 0
+push argument 5
 call Screen.setColor 1
 pop temp 0
 label WHILE_EXP0
 push local 0
-push argument 3
-push constant 2
-call Math.divide 2
+push argument 4
 lt
 not
 if-goto WHILE_END0
 push argument 0
 push local 0
 add
+push argument 4
+push constant 2
+call Math.divide 2
+sub
 push argument 1
-push argument 0
-push argument 2
-add
 push local 0
 add
-push argument 1
+push argument 4
+push constant 2
+call Math.divide 2
+sub
 push argument 2
+push local 0
 add
+push argument 4
+push constant 2
+call Math.divide 2
+sub
+push argument 3
+push local 0
+add
+push argument 4
+push constant 2
+call Math.divide 2
+sub
 call Screen.drawLine 4
 pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function DrawHelper.drawG 2
+push argument 2
+push argument 3
+call Math.divide 2
+pop local 1
+push constant 1
+pop local 0
+label WHILE_EXP0
+push local 0
+push argument 3
+lt
+not
+if-goto WHILE_END0
 push argument 0
 push local 0
+push local 1
+call Math.multiply 2
+add
+push argument 1
+push argument 0
+push local 0
+push local 1
+call Math.multiply 2
 add
 push argument 1
 push argument 2
 add
+push argument 4
+push argument 5
+call DrawHelper.drawLine 6
+pop temp 0
+push argument 0
+push argument 1
+push local 0
+push local 1
+call Math.multiply 2
+add
 push argument 0
 push argument 2
 add
-push local 0
-add
 push argument 1
-call Screen.drawLine 4
+push local 0
+push local 1
+call Math.multiply 2
+add
+push argument 4
+push argument 5
+call DrawHelper.drawLine 6
 pop temp 0
 push local 0
 push constant 1

@@ -1,23 +1,39 @@
 class DrawHelper{
 
-    function void drawO ( int x, int y, int r, int w , boolean color) {
-        do Screen.setColor(color);
+    function void drawO ( int x, int y, int r, int w , boolean c) {
+        do Screen.setColor(c);
         do Screen.drawCircle(x+r,y+r,r);
-        do Screen.setColor(~color);
+        do Screen.setColor(~c);
         do Screen.drawCircle(x+r,y+r,r-w);
         return;
     }
 
-    function void drawX(int x, int y, int s, int w, boolean color){
+    function void drawX(int x, int y, int s, int w, boolean c){
         // (x,y): top left coordinates
         // s: the size
         // w: width of the lines
+        do DrawHelper.drawLine(x,y,x+s,y+s,w,c);
+        do DrawHelper.drawLine(x,y+s,x+s,y,w,c);
+        return;
+    }
+    function void drawLine(int x1, int y1, int x2, int y2, int w, boolean c){
         var int i;
-        let i=-(w/2);
-        do Screen.setColor(color);
-        while(i<(w/2)){
-            do Screen.drawLine(x+i,y,x+s+i,y+s);
-            do Screen.drawLine(x+i,y+s,x+s+i,y);
+        let i=0;
+        do Screen.setColor(c);
+        while(i<w){
+            do Screen.drawLine(x1+i-(w/2),y1+i-(w/2),x2+i-(w/2),y2+i-(w/2));
+            let i=i+1;
+        }
+        return;
+    }
+
+    function void drawG(int x, int y,int s,int d, int w, boolean c){
+        var int i,p;
+        let p=s/d;
+        let i=1;
+        while (i<d){
+            do DrawHelper.drawLine(x+(i*p),y,x+(i*p),y+s,w,c);
+            do DrawHelper.drawLine(x,y+(i*p),x+s,y+(i*p),w,c);
             let i=i+1;
         }
         return;
