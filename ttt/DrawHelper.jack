@@ -1,10 +1,25 @@
 class DrawHelper{
 
-    function void drawCircle ( int x, int y, int r, int w , boolean color) {
+    function void drawO ( int x, int y, int r, int w , boolean color) {
         do Screen.setColor(color);
         do Screen.drawCircle(x,y,r);
         do Screen.setColor(~color);
         do Screen.drawCircle(x,y,r-w);
+        return;
+    }
+
+    function void drawX(int x, int y, int s, int w, boolean color){
+        // (x,y): top left coordinates
+        // s: the size
+        // w: width of the lines
+        var int i;
+        let i=0;
+        do Screen.setColor(color);
+        while(i<w){
+            do Screen.drawLine(x+i,y,x+s+i,y+s);
+            do Screen.drawLine(x+i,y+s,x+s+i,y);
+            let i=i+1;
+        }
         return;
     }
 }

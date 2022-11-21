@@ -6,9 +6,10 @@ class Renderer {
     }
 
     method void draw(){
-        do DrawHelper.drawCircle(100,100,100,5,true);
-        do DrawHelper.drawCircle(50,100,30,12,true);
-        do DrawHelper.drawCircle(150,100,30,12,true);
+        do DrawHelper.drawO(100,100,100,5,true);
+        do DrawHelper.drawO(50,100,30,12,true);
+        do DrawHelper.drawO(150,100,30,12,true);
+        do DrawHelper.drawX(100,100,100,5,true);
         return;
     }
 }
