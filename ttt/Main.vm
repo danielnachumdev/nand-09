@@ -1,4 +1,4 @@
-function Main.main 5
+function Main.main 6
 push constant 1
 pop local 0
 push constant 1
@@ -11,6 +11,12 @@ pop local 3
 push local 3
 call Board.new 1
 pop local 4
+push local 4
+call Renderer.new 1
+pop local 5
+push local 5
+call Renderer.draw 1
+pop temp 0
 push local 4
 call Board.dispose 1
 pop temp 0

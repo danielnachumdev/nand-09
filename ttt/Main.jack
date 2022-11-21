@@ -13,11 +13,14 @@ class Main {
   function void main() {
     var int X,O,BLANK,SIZE;
     var Board board;
+    var Renderer renderer;
     let X=1;
     let O=-1;
     let BLANK=0;
     let SIZE=3;
     let board = Board.new(SIZE);
+    let renderer = Renderer.new(board);
+    do renderer.draw();
     
     do board.dispose();
     return;

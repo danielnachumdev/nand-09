@@ -1,0 +1,12 @@
+class Renderer {
+    field Board board;
+    constructor Renderer new(Board _board){
+        let board = _board;
+        return this;
+    }
+
+    method void draw(){
+        do Screen.drawCircle(100,100,100);
+        return;
+    }
+}
