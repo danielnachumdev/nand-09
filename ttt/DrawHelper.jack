@@ -1,0 +1,10 @@
+class DrawHelper{
+
+    function void drawCircle ( int x, int y, int r, int w , boolean color) {
+        do Screen.setColor(color);
+        do Screen.drawCircle(x,y,r);
+        do Screen.setColor(~color);
+        do Screen.drawCircle(x,y,r-w);
+        return;
+    }
+}
