@@ -11,9 +11,18 @@
   */
 class Main {
   function void main() {
-    // Your code goes here!
+    var int X,O,BLANK,SIZE;
+    var Board board;
+    let X=1;
+    let O=-1;
+    let BLANK=0;
+    let SIZE=3;
+    let board = Board.new(SIZE);
+    
+    do board.dispose();
     return;
   }
 
   // Your code goes here!
 }
+

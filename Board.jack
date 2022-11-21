@@ -2,13 +2,40 @@ class Board{
     field int size;
     field Array data;
     constructor Board new(int _size){
+        var int i;
         let size = _size;
         let data = Array.new(size);
-        var i;
-        let i=0;
-        while (~(i==size)){
+        let i = 0;
+        while (i<size){
             let data[i] = Array.new(size);
             let i=i+1;
         }
+        return this;
+    }
+
+    method int get ( int i, int j ) {
+        var Array curr_row;
+        let curr_row = data[i];
+        return curr_row[j];
+    }
+
+    method void set ( int i, int j, int value ) {
+        var Array curr_row;
+        let curr_row=data[i];
+        let curr_row[j]=value;
+        return;
+    }
+
+    method void dispose(){
+        var int i;
+        var Array curr;
+        let i=0;
+        while (i<size){
+            let curr = data[i];
+            do curr.dispose();
+            let i=i+1;
+        }
+        do data.dispose();
+        return;
     }
 }
