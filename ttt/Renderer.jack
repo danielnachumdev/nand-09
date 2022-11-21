@@ -6,10 +6,8 @@ class Renderer {
     }
 
     method void draw(){
-        do DrawHelper.drawO(100,100,100,5,true);
-        do DrawHelper.drawO(50,100,30,12,true);
-        do DrawHelper.drawO(150,100,30,12,true);
-        do DrawHelper.drawX(100,100,100,5,true);
+        do DrawHelper.drawO(50,50,25,5,true);
+        do DrawHelper.drawX(50,50,50,5,true);
         return;
     }
 }

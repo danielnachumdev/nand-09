@@ -9,33 +9,17 @@ return
 function Renderer.draw 0
 push argument 0
 pop pointer 0
-push constant 100
-push constant 100
-push constant 100
+push constant 50
+push constant 50
+push constant 25
 push constant 5
 push constant 0
 not
 call DrawHelper.drawO 5
 pop temp 0
 push constant 50
-push constant 100
-push constant 30
-push constant 12
-push constant 0
-not
-call DrawHelper.drawO 5
-pop temp 0
-push constant 150
-push constant 100
-push constant 30
-push constant 12
-push constant 0
-not
-call DrawHelper.drawO 5
-pop temp 0
-push constant 100
-push constant 100
-push constant 100
+push constant 50
+push constant 50
 push constant 5
 push constant 0
 not
