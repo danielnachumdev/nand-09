@@ -1,0 +1,107 @@
+class Game{
+    field int ---;
+    field Array ----;
+    field Board board;
+
+    constructor Game new(Player playerX, Player playerO, Renderer renderer, Board board){
+    #TODO
+    }
+
+    method Player run_game(){
+        while(
+            #TODO
+
+    }
+
+    method int is_board_full(){
+        #TODO
+
+    }
+
+    method Player return_winner(){
+        #TODO
+
+    }
+    method int streak_row(int sign){
+    //return row number if steark, -1 else
+        var int i,j;
+        let i=0;
+        var int streak;
+        while (i< board.getSize) {
+            let j=0;
+            let steark = 1;
+            while(j<board.getSize){
+                if(~(board.get(i,j) = sign)){
+                    let streak = 0;
+                }
+                let j= j + 1;
+            }
+            if(streak=1)){
+                    return i;
+            }
+            let i= i + 1;
+        }
+        return -1;
+    }
+
+    method int streak_col(int sign){
+    //return col number if steark, -1 else
+    var int i,j;
+        let i=0;
+        var int streak;
+        while (j< board.getSize) {
+            let j=0;
+            let steark = 1;
+            while(i<board.getSize){
+                if(~(board.get(i,j) = sign)){
+                    let streak = 0;
+                }
+                let i= i + 1;
+            }
+            if(streak=1)){
+                    return j;
+            }
+            let j= j + 1;
+        }
+        return -1;
+    }
+
+    method int streak_diag(int sign){
+    //return 11 if steark head diagonal, 22 if streak second diag, -1 else
+        var int i,j;
+        let i=0;
+        var int streak;
+        let j=0;
+        let steark = 1;
+        while (i< board.getSize) {
+             if(~(board.get(i,j) = sign)){
+                    let streak = 0;
+                }
+            let j= j + 1;
+            let i= i + 1;
+        }
+        if(streak=1)){
+            return 11;
+        }
+        
+        let i=board.getSize-1;
+        let j=board.getSize-1;
+        let steark = 1;
+        while (i> -1) {
+             if(~(board.get(i,j) = sign)){
+                    let streak = 0;
+                }
+                
+            }
+            let j= j - 1;
+            let i= i - 1;
+        }
+        if(streak=1)){
+            return 22;
+        }
+        
+        return -1;
+   
+    }
+
+}
