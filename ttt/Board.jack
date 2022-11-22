@@ -1,13 +1,18 @@
 class Board{
     field int size;
     field Array data;
+
     constructor Board new(int _size){
         var int i;
+        var Array curr;
         let size = _size;
         let data = Array.new(size);
         let i = 0;
         while (i<size){
             let data[i] = Array.new(size);
+            let curr=data[i];
+            let curr[0]=1;
+            let curr[2]=-1;
             let i=i+1;
         }
         return this;
@@ -26,6 +31,12 @@ class Board{
         return;
     }
 
+    method int getSize(){
+        return size;
+    }
+    method Array getData(){
+        return data;
+    }
     method void dispose(){
         var int i;
         var Array curr;

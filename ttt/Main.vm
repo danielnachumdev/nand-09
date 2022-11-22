@@ -15,7 +15,10 @@ push local 4
 call Renderer.new 1
 pop local 5
 push local 5
-call Renderer.draw 1
+push constant 50
+push constant 50
+push constant 150
+call Renderer.draw 4
 pop temp 0
 push local 4
 call Board.dispose 1

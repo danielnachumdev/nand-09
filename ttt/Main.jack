@@ -20,8 +20,7 @@ class Main {
     let SIZE=3;
     let board = Board.new(SIZE);
     let renderer = Renderer.new(board);
-    do renderer.draw();
-    
+    do renderer.draw(50,50,150);
     do board.dispose();
     return;
   }
