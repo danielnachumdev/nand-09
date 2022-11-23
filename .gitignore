@@ -1,3 +1,5 @@
 EXAMPLES/
 AUTHORS
 *.pdf
+*.vm
+LOCAL.py
