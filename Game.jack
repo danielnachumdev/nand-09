@@ -32,7 +32,6 @@ class Game{
             else{
                  player_turn=playerX;
             }
-
         }
         do board.dispose();           
         return null;
