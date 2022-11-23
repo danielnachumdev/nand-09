@@ -47,6 +47,7 @@ class Board{
             let i=i+1;
         }
         do data.dispose();
+        do Memory.deAlloc(this);
         return;
     }
 }

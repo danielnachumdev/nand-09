@@ -1,10 +1,16 @@
 class Player{
-    field Sign _sign
-    field int sign;
+    field Char _sign;
+    field int _value;
 
-    constructor Player new(Sign sign){
-    let _sign = sign
-    return this
+    constructor Player new(int value){
+        let _value = value;
+        if(value = 1){
+            let _sign = 'X';
+        }
+        else{
+            let _sign = 'O';
+        }
+        return this;
     }
 
     method void play_turn(Board board){
@@ -23,4 +29,17 @@ class Player{
         board.set(i,j,sign)
         return;
         }
+
+    method char get_sign(){
+        return _sign;
+        }
+
+    method int get_value(){
+        return _value;
+        }
+
+    method void dispose(){
+        do Memory.deAlloc(this);
+        return;
+    }
 }
