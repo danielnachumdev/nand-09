@@ -5,10 +5,10 @@ class Player{
     constructor Player new(int _value){
         let value = _value;
         if(value = 1){
-            let sign = 'X';
+            let sign = "X";
         }
         else{
-            let sign = 'O';
+            let sign = "O";
         }
         return this;
     }
