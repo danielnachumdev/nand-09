@@ -1,0 +1,13 @@
+class Utils{
+    function int stringIntAt(String s,int i){
+        var int res;
+        var char c;
+        var String t;
+        let t=String.new(2);
+        let c=s.charAt(i);
+        do t.appendChar(c);
+        let res=t.intValue();
+        do t.dispose();
+        return res;
+    }
+}
