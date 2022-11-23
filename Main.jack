@@ -11,18 +11,18 @@ class Main {
         let playerO = Player.new(-1);
         let winner = null;
         let play =  Keybord.readInt("HI! Do you want to play tic-tac-toe? press y for YES and n for NO");
-        while(play= y){
+        while(play= 121){
             let size =  Keybord.readInt("Enter number X for borad size  X*X");
             if(size< 4){
             let size = SIZE;
             }
-            let game = Game.new(playerX, playerO, size) 
-            winner = game.run_game()
-            if(~(winner=null){
-            let win_sign = winner.get_sign();
+            let game = Game.new(playerX, playerO, size) ;
+            let winner = game.run_game();
+            if(~(winner=null)){
+            let win_sign = winner.getSign();
             }
             do Output.printString("Game over ");
-            do Output.printString(win_sign));
+            do Output.printString(win_sign);
             do Output.printString(" won!");
             do Output.printString("\n");
             let play =  Keybord.readInt("HI! Do you want to play tic-tac-toe? press y for YES and n for NO");
