@@ -10,12 +10,10 @@ class Main {
         let playerX = Player.new(1);
         let playerO = Player.new(-1);
         let winner = null;
-        do Output.printString("HI! ");
-        let play =  Keyboard.readInt("Do you want to play tic-tac-toe? press y for YES and n for NO");
-        do Output.printString("\n");
-        while(play= 121){
+        do Output.printString("HI! Do you want to play tic-tac-toe? press y for YES and n for NO");
+        let play = Keyboard.readChar();
+        while(play= 89){
             let size =  Keyboard.readInt("Enter number X for borad size  X*X");
-            do Output.printString("\n");
             if(size< 4){
             let size = SIZE;
             }
