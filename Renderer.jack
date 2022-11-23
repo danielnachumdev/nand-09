@@ -18,17 +18,18 @@ class Renderer {
             while(j<d){
                 let curr=row[j];
                 if (curr=1){
-                    do Graphics.drawX(x+(i*s/d),y+(j*s/d),s/d,5,true);
+                    do DrawHelper.drawX(x+(i*s/d),y+(j*s/d),s/d,5,true);
                 }
                 if (curr=-1){
-                    do Graphics.drawO(x+(i*s/d),y+(j*s/d),s/d,5,true);
+                    do DrawHelper.drawO(x+(i*s/d),y+(j*s/d),s/d/2,5,true);
                 }
                 let j=j+1;
             }
+            let j=0;
             let i=i+1;
         }
-        do Graphics.drawO(50,50,25,5,true);
-        do Graphics.drawX(50,50,50,5,true);
+        do DrawHelper.drawO(50,50,25,5,true);
+        do DrawHelper.drawX(50,50,50,5,true);
         return;
     }
 }

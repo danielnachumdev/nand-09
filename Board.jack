@@ -10,24 +10,21 @@ class Board{
         let i = 0;
         while (i<size){
             let data[i] = Array.new(size);
-            let curr=data[i];
-            let curr[0]=1;
-            let curr[2]=-1;
             let i=i+1;
         }
         return this;
     }
 
-    method int get ( int i, int j ) {
+    method int get ( int row, int col ) {
         var Array curr_row;
-        let curr_row = data[i];
-        return curr_row[j];
+        let curr_row = data[col];
+        return curr_row[row];
     }
 
-    method void set ( int i, int j, int value ) {
+    method void set ( int row, int col, int value ) {
         var Array curr_row;
-        let curr_row=data[i];
-        let curr_row[j]=value;
+        let curr_row=data[col];
+        let curr_row[row]=value;
         return;
     }
 
@@ -47,6 +44,7 @@ class Board{
             let i=i+1;
         }
         do data.dispose();
+        do Memory.deAlloc(this);
         return;
     }
 }
