@@ -1,5 +1,4 @@
 class Game{
-    field int ---;
     field Renderer renderer;
     field Board board;
     field Player player_turn;
@@ -26,13 +25,13 @@ class Game{
             if(~(return_winner(player_turn) = null){
                 do board.dispose();   
                 return player_turn;
-                }
+            }
             if(player_turn = playerX){
                 player_turn=playerO;
-                }   
+            }   
             else{
                  player_turn=playerX;
-                 }
+            }
 
         }
         do board.dispose();           
@@ -54,7 +53,7 @@ class Game{
             }
             let i= i + 1;
         }
-            return 1; // board is full
+        return 1; // board is full
     }
         
 

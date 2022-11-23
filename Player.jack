@@ -16,7 +16,6 @@ class Player{
     method void play_turn(Board board){
         var String coordinates ;
         var int i,j;
-
         let coordinates =  Keybord.readLine("Enter coordinates in 'row,column' template.");
         let i = String.intValue(String.charAt(0));
         let j = String.intValue(String.charAt(2));
@@ -28,15 +27,15 @@ class Player{
         }
         board.set(i,j,sign)
         return;
-        }
+    }
 
     method char get_sign(){
         return _sign;
-        }
+    }
 
     method int get_value(){
         return _value;
-        }
+    }
 
     method void dispose(){
         do Memory.deAlloc(this);
