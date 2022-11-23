@@ -1,0 +1,45 @@
+class Player{
+    field Char _sign;
+    field int _value;
+
+    constructor Player new(int value){
+        let _value = value;
+        if(value = 1){
+            let _sign = 'X';
+        }
+        else{
+            let _sign = 'O';
+        }
+        return this;
+    }
+
+    method void play_turn(Board board){
+        var String coordinates ;
+        var int i,j;
+
+        let coordinates =  Keybord.readLine("Enter coordinates in 'row,column' template.");
+        let i = String.intValue(String.charAt(0));
+        let j = String.intValue(String.charAt(2));
+        while (~(board.get(i,j)=0)){
+            let coordinates =  Keybord.readLine("Those coordinates are taken, choose different cell, ('row,column' template) ");
+            let i = String.intValue(String.charAt(0));
+            let j = String.intValue(String.charAt(2));
+            do Output.println();      // New line
+        }
+        board.set(i,j,sign)
+        return;
+        }
+
+    method char get_sign(){
+        return _sign;
+        }
+
+    method int get_value(){
+        return _value;
+        }
+
+    method void dispose(){
+        do Memory.deAlloc(this);
+        return;
+    }
+}

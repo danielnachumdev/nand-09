@@ -1,0 +1,170 @@
+class Game{
+    field int ---;
+    field Renderer renderer;
+    field Board board;
+    field Player player_turn;
+    field Player playerX;
+    field Player playerO;
+
+    constructor Game new(Player _playerX, Player _playerO, int size){
+        let board = Board.new(size);
+        let renderer = Renderer.new(board);
+        let playerX = _playerX;
+        let playerO = _playerO;
+        return this;
+    }
+
+    method Player run_game(){
+
+        while(is_board_full() = 0){
+            do Output.printString("This is "+player_turn.get_sign()+" turn:");
+            do Output.printString(player_turn.get_sign());
+            do Output.printString(" turn:");
+            do Output.printString("\n");
+            do renderer.draw(50,50,150);
+            player_turn.play_turn(board)
+            if(~(return_winner(player_turn) = null){
+                do board.dispose();   
+                return player_turn;
+                }
+            if(player_turn = playerX){
+                player_turn=playerO;
+                }   
+            else{
+                 player_turn=playerX;
+                 }
+
+        }
+        do board.dispose();           
+        return null;
+    }
+
+    method int is_board_full(){
+        var int i,j;
+        let i=0;
+        //var int streak;
+        while (i< board.getSize()) {
+            let j=0;
+            //let steark = 1;
+            while(j<board.getSize()){
+                if(board.get(i,j) = 0){ // board isnt full
+                    return ;
+                }
+                let j= j + 1;
+            }
+            let i= i + 1;
+        }
+            return 1; // board is full
+    }
+        
+
+    method Player return_winner(Player player){
+        var int win_row, win_col, win_diag;
+        let win_row = streak_row(player.get_value())
+        if(~(win_row =-1){
+            return player;
+            }
+        let win_col = streak_col(player.get_value())
+        if(~(win_col =-1){
+            return player;
+            }
+        let win_diag = streak_diag(player.get_value())
+        if(~(win_diag =-1){
+            return player;
+            }
+        return null;
+    }
+
+    method int streak_row(int sign){
+    //return row number if steark, -1 else
+        var int i,j;
+        let i=0;
+        var int streak;
+        while (i< board.getSize()) {
+            let j=0;
+            let steark = 1;
+            while(j<board.getSize()){
+                if(~(board.get(i,j) = sign)){
+                    let streak = 0;
+                }
+                let j= j + 1;
+            }
+            if(streak=1)){
+                    return i;
+            }
+            let i= i + 1;
+        }
+        return -1;
+    }
+
+    method int streak_col(int sign){
+    //return col number if steark, -1 else
+    var int i,j;
+        let i=0;
+        var int streak;
+        while (j< board.getSize()) {
+            let j=0;
+            let steark = 1;
+            while(i<board.getSize()){
+                if(~(board.get(i,j) = sign)){
+                    let streak = 0;
+                }
+                let i= i + 1;
+            }
+            if(streak=1)){
+                    return j;
+            }
+            let j= j + 1;
+        }
+        return -1;
+    }
+
+    method int streak_diag(int sign){
+    //return 11 if steark head diagonal, 22 if streak second diag, -1 else
+        var int i,j;
+        let i=0;
+        var int streak;
+        let j=0;
+        let steark = 1;
+        while (i< board.getSize()) {
+             if(~(board.get(i,j) = sign)){
+                    let streak = 0;
+                }
+            let j= j + 1;
+            let i= i + 1;
+        }
+        if(streak=1)){
+            return 11;
+        }
+        
+        let i=board.getSize()-1;
+        let j=board.getSize()-1;
+        let steark = 1;
+        while (i> -1) {
+             if(~(board.get(i,j) = sign)){
+                    let streak = 0;
+                }
+                
+            }
+            let j= j - 1;
+            let i= i - 1;
+        }
+        if(streak=1)){
+            return 22;
+        }
+        
+        return -1;
+   
+    }
+
+    method void dispose(){
+        #TODO
+        do playerO.dispose();
+        do playerX.dispose();
+        do renderer.dispose();
+        do board.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
+
+}
