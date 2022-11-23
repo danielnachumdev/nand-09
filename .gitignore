@@ -3,6 +3,7 @@ AUTHORS
 *.pdf
 *.vm
 LOCAL.py
+.vscode/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

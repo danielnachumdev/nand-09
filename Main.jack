@@ -11,15 +11,22 @@
   */
 class Main {
   function void main() {
-    var int X,O,BLANK,SIZE;
+    var int X,O,BLANK,SIZE,i;
+    var Array curr;
     var Board board;
     var Renderer renderer;
     let X=1;
     let O=-1;
     let BLANK=0;
-    let SIZE=3;
+    let SIZE=6;
     let board = Board.new(SIZE);
     let renderer = Renderer.new(board);
+    let i=0;
+    while (i<board.getSize()) {
+      do board.set(0,i,X);
+      do board.set(2,i,O);
+      let i=i+1;
+    }
     do renderer.draw(50,50,150);
     do board.dispose();
     return;

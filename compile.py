@@ -5,3 +5,4 @@ if __name__ == "__main__":
     _, stdout, stderr = cm(COMPILER)
     print(bytes_to_str(stdout))
     print(bytes_to_str(stderr))
+    print(ord("\n"))
