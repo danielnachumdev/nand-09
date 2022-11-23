@@ -9,7 +9,7 @@ class Renderer {
         var int d,i,j,curr;
         var Array row,data;
         let d = board.getSize();
-        do DrawHelper.drawG(x,y,s,d,5,true);
+        do Graphics.drawG(x,y,s,d,5,true);
         let i=0;
         let j=0;
         let data=board.getData();
@@ -18,17 +18,17 @@ class Renderer {
             while(j<d){
                 let curr=row[j];
                 if (curr=1){
-                    do DrawHelper.drawX(x+(i*s/d),y+(j*s/d),s/d,5,true);
+                    do Graphics.drawX(x+(i*s/d),y+(j*s/d),s/d,5,true);
                 }
                 if (curr=-1){
-                    do DrawHelper.drawO(x+(i*s/d),y+(j*s/d),s/d,5,true);
+                    do Graphics.drawO(x+(i*s/d),y+(j*s/d),s/d,5,true);
                 }
                 let j=j+1;
             }
             let i=i+1;
         }
-        do DrawHelper.drawO(50,50,25,5,true);
-        do DrawHelper.drawX(50,50,50,5,true);
+        do Graphics.drawO(50,50,25,5,true);
+        do Graphics.drawX(50,50,50,5,true);
         return;
     }
 }
