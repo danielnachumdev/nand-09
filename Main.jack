@@ -19,7 +19,7 @@ class Main {
             let game = Game.new(playerX, playerO, size) ;
             let winner = game.run_game();
             if(~(winner=null)){
-            let win_sign = winner.get_sign();
+            let win_sign = winner.getSign();
             }
             do Output.printString("Game over ");
             do Output.printString(win_sign);

@@ -1,14 +1,14 @@
 class Player{
-    field Char _sign;
-    field int _value;
+    field Char sign;
+    field int value;
 
-    constructor Player new(int value){
-        let _value = value;
+    constructor Player new(int _value){
+        let value = _value;
         if(value = 1){
-            let _sign = 'X';
+            let sign = 'X';
         }
         else{
-            let _sign = 'O';
+            let sign = 'O';
         }
         return this;
     }
@@ -25,16 +25,16 @@ class Player{
             let j = String.intValue(String.charAt(2));
             do Output.println();      // New line
         }
-        board.set(i,j,sign)
+        do board.set(i,j,sign);
         return;
     }
 
-    method char get_sign(){
-        return _sign;
+    method char getSign(){
+        return sign;
     }
 
-    method int get_value(){
-        return _value;
+    method int getValue(){
+        return value;
     }
 
     method void dispose(){

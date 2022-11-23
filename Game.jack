@@ -58,15 +58,15 @@ class Game{
 
     method Player return_winner(Player player){
         var int win_row, win_col, win_diag;
-        let win_row = streak_row(player.get_value())
+        let win_row = streak_row(player.getValue())
         if(~(win_row =-1){
             return player;
             }
-        let win_col = streak_col(player.get_value())
+        let win_col = streak_col(player.getValue())
         if(~(win_col =-1){
             return player;
             }
-        let win_diag = streak_diag(player.get_value())
+        let win_diag = streak_diag(player.getValue())
         if(~(win_diag =-1){
             return player;
             }
