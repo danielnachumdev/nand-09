@@ -16,11 +16,12 @@ class Player{
     method void play_turn(Board board){
         var String coordinates ;
         var int i,j;
-        let coordinates =  KeyBoard.readLine("Enter coordinates in 'row,column' template.");
+        let coordinates =  Keyboard.readLine("Enter coordinates in 'row,column' template.");
+        do Output.println();
         let i = String.intValue(String.charAt(0));
         let j = String.intValue(String.charAt(2));
         while (~(board.get(i,j)=0)){
-            let coordinates =  KeyBoard.readLine("Those coordinates are taken, choose different cell, ('row,column' template) ");
+            let coordinates =  Keyboard.readLine("Those coordinates are taken, choose different cell, ('row,column' template) ");
             let i = String.intValue(String.charAt(0));
             let j = String.intValue(String.charAt(2));
             do Output.println();      // New line
