@@ -1,19 +1,14 @@
 class Board{
     field int size;
-    field Array data;
+    field intArray2d data;
 
     constructor Board new(int _size){
         var int i;
-        var Array curr;
         let size = _size;
-        let data = Array.new(size);
-        let i = 0;
-        while (i<size){
-            let data[i] = Array.new(size);
-            let i=i+1;
-        }
+        let data = intArray2d.new(size,size);
         return this;
     }
+
     method boolean isInside(int row,int col){
         var boolean a,b,c,d;
         let a=0<(row+1);
@@ -25,9 +20,8 @@ class Board{
 
     method int get ( int row, int col ) {
         var Array curr_row;
-        if (isInside(row,col)){
-            let curr_row = data[col];
-            return curr_row[row];
+        if (data.isInside(row,col)){
+            return data.get(row,col);
         }
         // 0 === empty
         return 0;
@@ -36,8 +30,7 @@ class Board{
     method boolean set ( int row, int col, int value ) {
         var Array curr_row;
         if (isInside(row,col) & (get(row,col)=0)){
-            let curr_row=data[col];
-            let curr_row[row]=value;
+            do data.set(row,col,value);
             return true;
         }
         return false;
@@ -62,20 +55,7 @@ class Board{
     method int getSize(){
         return size;
     }
-
-    method Array getData(){
-        return data;
-    }
-
     method void dispose(){
-        var int i;
-        var Array curr;
-        let i=0;
-        while (i<size){
-            let curr = data[i];
-            do curr.dispose();
-            let i=i+1;
-        }
         do data.dispose();
         do Memory.deAlloc(this);
         return;

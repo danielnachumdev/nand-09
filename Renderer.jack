@@ -7,16 +7,14 @@ class Renderer {
 
     method void draw(int x, int y, int s){
         var int d,i,j,curr;
-        var Array row,data;
+        var Array data;
         let d = board.getSize();
         do Graphics.drawG(x,y,s,d,5,true);
         let i=0;
-        let j=0;
-        let data=board.getData();
         while (i<d){
-            let row=data[i];
+            let j=0;
             while(j<d){
-                let curr=row[j];
+                let curr=board.get(i,j);
                 if (curr=1){
                     do Graphics.drawX(x+(i*s/d),y+(j*s/d),s/d,5,true);
                 }
@@ -25,7 +23,6 @@ class Renderer {
                 }
                 let j=j+1;
             }
-            let j=0;
             let i=i+1;
         }
         return;

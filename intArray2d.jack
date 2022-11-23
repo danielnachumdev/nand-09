@@ -1,0 +1,61 @@
+class intArray2d{
+    field int rows,cols;
+    field Array data;
+
+    constructor intArray2d new(int _rows, int _cols){
+        var int i;
+        let rows = _rows;
+        let cols = _cols;
+        let data = Array.new(rows);
+        let i = 0;
+        while (i<rows){
+            let data[i] = Array.new(cols);
+            let i=i+1;
+        }
+        return this;
+    }
+
+    method boolean isInside(int row,int col){
+        var boolean a,b,c,d;
+        let a=0<(row+1);
+        let b=row<rows;
+        let c=0<(col+1);
+        let d=col<cols;
+        return a & b & c & d;
+    }
+
+    method int get ( int row, int col ) {
+        var Array curr_row;
+        let curr_row = data[col];
+        return curr_row[row];
+    }
+
+    method void set ( int row, int col, int value ) {
+        var Array curr_row;
+        let curr_row=data[col];
+        let curr_row[row]=value;
+        return;
+    }
+
+    method int getRows(){
+        return rows;
+    }
+
+    method int getRCols(){
+        return cols;
+    }
+
+    method void dispose(){
+        var int i;
+        var Array curr;
+        let i=0;
+        while (i<rows){
+            let curr = data[i];
+            do curr.dispose();
+            let i=i+1;
+        }
+        do data.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
+}
