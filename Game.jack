@@ -1,159 +1,133 @@
 class Game{
     field Renderer renderer;
     field Board board;
-    field Player player_turn;
+    field Player currentPlayer;
     field Player playerX;
     field Player playerO;
+    field int winStreak;
 
-    constructor Game new(Player _playerX, Player _playerO, int size){
+    constructor Game new(Player _playerX, Player _playerO, int size,int _winStreak){
         let board = Board.new(size);
         let renderer = Renderer.new(board);
         let playerX = _playerX;
         let playerO = _playerO;
+        let winStreak = _winStreak;
         return this;
     }
 
     method Player run_game(){
-        let player_turn=playerX;
-        while(is_board_full() = 0){
+        let currentPlayer=playerX;
+        while(board.hasEmpty()){
             do Graphics.clear();
             do Output.printString("This is ");
-            do Output.printString(player_turn.getSign());
+            do Output.printString(currentPlayer.getSign());
             do Output.printString("'s turn");
             do Output.println();
             do renderer.draw(50,50,150);
-            do player_turn.play_turn(board);
-            if(~(return_winner(player_turn)) = null){
-                do board.dispose();   
-                return player_turn;
+            do currentPlayer.play_turn(board);
+            if(hasPlayerWon(currentPlayer.getValue())){
+                do renderer.draw(50,50,150);
+                return currentPlayer;
             }
-            if(player_turn = playerX){
-                let player_turn=playerO;
+            //switch players
+            if(currentPlayer = playerX){
+                let currentPlayer=playerO;
             }   
             else{
-                let player_turn=playerX;
+                let currentPlayer=playerX;
             }
             
         }
+        do renderer.draw(50,50,150);
         do board.dispose();           
         return null;
     }
 
-    method int is_board_full(){
-        var int i,j;
+    method boolean hasPlayerWon(int playerValue){
+        var boolean a,b,c;
+        let a = checkHorizontal(playerValue);
+        let b = checkVertical(playerValue);
+        let c = checkDiagonal(playerValue);
+        return a|b|c;
+    }
+
+    method int checkHorizontal(int playerValue){
+        var int i,j,size;
+        var boolean streak;
         let i=0;
-        //var int streak;
-        while (i< board.getSize()) {
+        let size = board.getSize();
+        while (i< size) {
+            let streak = true;
             let j=0;
-            //let steark = 1;
-            while(j<board.getSize()){
-                if(board.get(i,j) = 0){ // board isnt full
-                    return 0;
+            while(j<size) {
+                if(~(board.get(i,j) = playerValue)){
+                    let streak = false;
+                    let j=size;
                 }
-                let j= j + 1;
+                let j = j + 1;
+            }
+            if (streak){
+                return true;
             }
             let i= i + 1;
         }
-        return 1; // board is full
-    }
-        
-
-    method Player return_winner(Player player){
-        var int win_row, win_col, win_diag;
-        let win_row = streak_row(player.getValue());
-        if(~(win_row =-1)){
-            return player;
-            }
-        let win_col = streak_col(player.getValue());
-        if(~(win_col =-1)){
-            return player;
-            }
-        let win_diag = streak_diag(player.getValue());
-        if(~(win_diag =-1)){
-            return player;
-            }
-        return null;
+        return false;
     }
 
-    method int streak_row(int sign){
-    //return row number if steark, -1 else
-        var int i,j;
-        var int streak;
+    method boolean checkVertical(int playerValue){
+        var int i,j,size;
+        var boolean streak;
         let i=0;
-        while (i< board.getSize()) {
+        let size = board.getSize();
+        while (i< size) {
+            let streak = true;
             let j=0;
-            let streak = 1;
-            while(j<board.getSize()){
-                if(~(board.get(i,j) = sign)){
-                    let streak = 0;
+            while(j<size) {
+                if(~(board.get(j,i) = playerValue)){
+                    let streak = false;
+                    let j=size;
                 }
-                let j= j + 1;
+                let j = j + 1;
             }
-            if(streak=1){
-                    return i;
+            if (streak){
+                return true;
             }
             let i= i + 1;
         }
-        return -1;
+        return false;
     }
 
-    method int streak_col(int sign){
-    //return col number if streak, -1 else
-    var int i,j;
-        var int streak;
-        let i=0;
-        while (j< board.getSize()) {
-            let j=0;
-            let streak = 1;
-            while(i<board.getSize()){
-                if(~(board.get(i,j) = sign)){
-                    let streak = 0;
-                }
-                let i= i + 1;
+    method boolean checkDiagonal(int playerValue){
+        var int i,size;
+        var boolean streak;
+        let size = board.getSize();
+        let i = 0;
+        let streak = true;
+        while (i < size) {
+            if(~(board.get(i,i) = playerValue)){
+                let streak = false;
+                let i=3;
             }
-            if(streak=1){
-                    return j;
-            }
-            let j= j + 1;
-        }
-        return -1;
-    }
-
-    method int streak_diag(int sign){
-    //return 11 if steark head diagonal, 22 if streak second diag, -1 else
-        var int i,j;
-        var int streak;
-        let i=0;
-        let j=0;
-        let streak = 1;
-        while (i< board.getSize()) {
-             if(~(board.get(i,j)= sign)){
-                    let streak = 0;
-                }
-            let j= j + 1;
             let i= i + 1;
         }
-        if(streak=1){
-            return 11;
+        if(streak){
+            return true;
         }
         
-        let i=board.getSize()-1;
-        let j=board.getSize()-1;
-        let streak = 1;
-        while (i> -1) {
-             if(~(board.get(i,j) = sign)){
-                    let streak = 0;
-                }
-            let j= j - 1;
-            let i= i - 1;
+        let i = 0;
+        let streak = true;
+        while (i < size) {
+            if(~(board.get((size-1-i),i) = playerValue)){
+                let streak = false;
+                let i=3;
             }
-
-    
-        if(streak=1){
-            return 22;
+            let i= i +1;
         }
-        
-        return -1;
+        if(streak){
+            return true;
+        }
+
+        return false;
    
     }
 

@@ -14,26 +14,59 @@ class Board{
         }
         return this;
     }
+    method boolean isInside(int row,int col){
+        var boolean a,b,c,d;
+        let a=0<(row+1);
+        let b=row<size;
+        let c=0<(col+1);
+        let d=col<size;
+        return a & b & c & d;
+    }
 
     method int get ( int row, int col ) {
         var Array curr_row;
-        let curr_row = data[col];
-        return curr_row[row];
+        if (isInside(row,col)){
+            let curr_row = data[col];
+            return curr_row[row];
+        }
+        // 0 === empty
+        return 0;
     }
 
-    method void set ( int row, int col, int value ) {
+    method boolean set ( int row, int col, int value ) {
         var Array curr_row;
-        let curr_row=data[col];
-        let curr_row[row]=value;
-        return;
+        if (isInside(row,col) & (get(row,col)=0)){
+            let curr_row=data[col];
+            let curr_row[row]=value;
+            return true;
+        }
+        return false;
+    }
+
+    method boolean hasEmpty(){
+        var int i, j;
+        let i = 0;
+        while (i < size) {
+            let j = 0;
+            while(j < size){
+                if(get(i, j) = 0){
+                    return true;
+                }
+                let j = j + 1;
+            }
+            let i = i + 1;
+        }
+        return false;
     }
 
     method int getSize(){
         return size;
     }
+
     method Array getData(){
         return data;
     }
+
     method void dispose(){
         var int i;
         var Array curr;

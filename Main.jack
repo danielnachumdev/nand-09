@@ -14,28 +14,29 @@ class Main {
         do Output.println();
         do Output.printString("press y for YES and n for NO: ");
         let play = Keyboard.readChar();
-        do Graphics.clear();
         while(play= 89){
+            do Graphics.clear();
             let size =  Keyboard.readInt("Enter number X for borad size  X*X and then press ENTER: ");
-            if(size< 4){
+            if(size < 4){
                 let size = SIZE;
             }
             do Graphics.clear();
-            let game = Game.new(playerX, playerO, size) ;
+            let game = Game.new(playerX, playerO, size,3) ;
             let winner = game.run_game();
+
             if(~(winner=null)){
                 let win_sign = winner.getSign();
             }
             do Output.printString("Game over ");
             do Output.printString(win_sign);
             do Output.printString(" won!");
-            do Ouput.println();
+            do Output.moveCursor(20,0);
             do Output.printString("Do you want to play again?");
             do Output.println();
             do Output.printString("press y for YES and n for NO: ");
             let play = Keyboard.readChar();
         }
-        do Screen.clearScreen();
+        do Graphics.clear();
         do Output.printString("The game has ended.");
         return;
     }
