@@ -14,19 +14,40 @@ class Player{
     }
 
     method void play_turn(Board board){
-        var String coordinates ;
+        var String coordinates,s1,s2;
         var int i,j;
+        var Char c1,c2;
         let coordinates =  Keyboard.readLine("Enter coordinates in 'row,column' template: ");
         do Output.println();
-        let i = String.intValue(String.charAt(0));
-        let j = String.intValue(String.charAt(2));
+        let s1=String.new(2);
+        let s2=String.new(2);
+        let c1 = coordinates.charAt(0);
+        let c2 = coordinates.charAt(2);
+        do s1.appendChar(c1);
+        do s2.appendChar(c2);
+        let i = s1.intValue();
+        let j = s2.intValue();
+        //add input validation check
         while (~(board.get(i,j)=0)){
-            let coordinates =  Keyboard.readLine("Those coordinates are taken, choose different cell, ('row,column' template): ");
-            let i = String.intValue(String.charAt(0));
-            let j = String.intValue(String.charAt(2));
+            do Graphics.clear();
+            do Output.printString("Those coordinates are taken ");
+            do Output.println();
+            let coordinates =  Keyboard.readLine("choose different cell, ('row,column' template): ");
+            do s1.dispose();
+            do s2.dispose();
+            let s1=String.new(2);
+            let s2=String.new(2);
+            let c1 = coordinates.charAt(0);
+            let c2 = coordinates.charAt(2);
+            do s1.appendChar(c1);
+            do s2.appendChar(c2);
+            let i = s1.intValue();
+            let j = s2.intValue();
             do Output.println();      // New line
         }
-        do board.set(i,j,sign);
+        do s1.dispose();
+        do s2.dispose();
+        do board.set(i,j,value);
         return;
     }
 

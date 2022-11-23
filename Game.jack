@@ -16,6 +16,7 @@ class Game{
     method Player run_game(){
         let player_turn=playerX;
         while(is_board_full() = 0){
+            do Graphics.clear();
             do Output.printString("This is ");
             do Output.printString(player_turn.getSign());
             do Output.printString("'s turn");
@@ -32,6 +33,7 @@ class Game{
             else{
                 let player_turn=playerX;
             }
+            
         }
         do board.dispose();           
         return null;
