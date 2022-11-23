@@ -39,4 +39,10 @@ class Graphics{
         }
         return;
     }
+
+    function void clear(){
+        do Screen.clearScreen();
+        do Output.moveCursor(0,0);
+        return;
+    }
 }

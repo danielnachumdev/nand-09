@@ -10,17 +10,21 @@ class Main {
         let playerX = Player.new(1);
         let playerO = Player.new(-1);
         let winner = null;
-        do Output.printString("HI! Do you want to play tic-tac-toe? press y for YES and n for NO");
+        do Output.printString("HI! Do you want to play tic-tac-toe?");
+        do Output.println();
+        do Output.printString("press y for YES and n for NO: ");
         let play = Keyboard.readChar();
+        do Graphics.clear();
         while(play= 89){
-            let size =  Keyboard.readInt("Enter number X for borad size  X*X");
+            let size =  Keyboard.readInt("Enter number X for borad size  X*X: ");
             if(size< 4){
-            let size = SIZE;
+                let size = SIZE;
             }
+            do Graphics.clear();
             let game = Game.new(playerX, playerO, size) ;
             let winner = game.run_game();
             if(~(winner=null)){
-            let win_sign = winner.getSign();
+                let win_sign = winner.getSign();
             }
             do Output.printString("Game over ");
             do Output.printString(win_sign);
@@ -29,6 +33,8 @@ class Main {
             let play =  KeyBoard.readInt("HI! Do you want to play tic-tac-toe? press y for YES and n for NO");
             do Output.println();
         }
+        do Screen.clearScreen();
+        do Output.printString("The game has ended.");
         return;
     }
 
