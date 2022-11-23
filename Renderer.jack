@@ -32,4 +32,8 @@ class Renderer {
         do DrawHelper.drawX(50,50,50,5,true);
         return;
     }
+    method void dispose(){
+        do Memory.deAlloc(this);
+        return;
+    }
 }
