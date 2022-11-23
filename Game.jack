@@ -18,7 +18,7 @@ class Game{
         while(is_board_full() = 0){
             do Output.printString("This is ");
             do Output.printString(player_turn.getSign());
-            do Output.printString(" turn:");
+            do Output.printString("'s turn");
             do Output.println();
             do renderer.draw(50,50,150);
             do player_turn.play_turn(board);

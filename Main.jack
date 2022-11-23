@@ -16,7 +16,7 @@ class Main {
         let play = Keyboard.readChar();
         do Graphics.clear();
         while(play= 89){
-            let size =  Keyboard.readInt("Enter number X for borad size  X*X: ");
+            let size =  Keyboard.readInt("Enter number X for borad size  X*X and then press ENTER: ");
             if(size< 4){
                 let size = SIZE;
             }
@@ -29,9 +29,11 @@ class Main {
             do Output.printString("Game over ");
             do Output.printString(win_sign);
             do Output.printString(" won!");
-            do Output.printString("\n");
-            let play =  KeyBoard.readInt("HI! Do you want to play tic-tac-toe? press y for YES and n for NO");
+            do Ouput.println();
+            do Output.printString("Do you want to play again?");
             do Output.println();
+            do Output.printString("press y for YES and n for NO: ");
+            let play = Keyboard.readChar();
         }
         do Screen.clearScreen();
         do Output.printString("The game has ended.");
