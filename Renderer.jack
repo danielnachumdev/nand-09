@@ -15,7 +15,7 @@ class Renderer {
         while (i<d){
             let j=0;
             while(j<d){
-                let curr=board.get(i,j);
+                let curr=board.get(j,i);
                 if (curr=1){
                     do Graphics.drawX(x+(i*s/d),y+(j*s/d),s/d,w,true);
                 }
