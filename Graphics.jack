@@ -28,13 +28,40 @@ class Graphics{
         return;
     }
 
-    function void drawG(int x, int y,int s,int d, int w, boolean c){
+    function void drawInt(int x, int y,int v){
+        var int r,c;
+        let r = WindowController.getRow();
+        let c =WindowController.getCol();
+        do WindowController.moveCursor(y*22/254,x*63/510);
+        do Output.printInt(v);
+        do WindowController.moveCursor(r,c);
+        return;
+    }
+
+    function void drawStringt(int x, int y,String v){
+        var int r,c;
+        let r = WindowController.getRow();
+        let c =WindowController.getCol();
+        //510/63=8.0952380952380952380952380952381
+        //254/22=11.545454545454545454545454545455
+        do WindowController.moveCursor(y*22/254,x*63/510);
+        do Output.printString(v);
+        do WindowController.moveCursor(r,c);
+        return;
+    }
+
+    function void drawG(int x, int y, int s, int d, int w, boolean c){
         var int i,p;
         let p=s/d;
+        let i=0;
+        do Graphics.drawInt(x+(i*p)+(p/2),y,i);
+        do Graphics.drawInt(x,y+(i*p)+(p/2),i);
         let i=1;
         while (i<d){
             do Graphics.drawLine(x+(i*p),y,x+(i*p),y+s,w,c);
+            do Graphics.drawInt(x+(i*p)+(p/2)+(i*2),y,i);
             do Graphics.drawLine(x,y+(i*p),x+s,y+(i*p),w,c);
+            do Graphics.drawInt(x,y+(i*(p+(254/22)))+(p/2)-(i*5),i);
             let i=i+1;
         }
         return;
@@ -42,7 +69,7 @@ class Graphics{
 
     function void clear(){
         do Screen.clearScreen();
-        do Output.moveCursor(0,0);
+        do WindowController.moveCursor(0,0);
         return;
     }
 }

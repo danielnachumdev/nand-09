@@ -6,20 +6,21 @@ class Renderer {
     }
 
     method void draw(int x, int y, int s){
-        var int d,i,j,curr;
+        var int d,i,j,curr,w;
         var Array data;
         let d = board.getSize();
-        do Graphics.drawG(x,y,s,d,5,true);
+        let w=3;
+        do Graphics.drawG(x,y,s,d,w,true);
         let i=0;
         while (i<d){
             let j=0;
             while(j<d){
                 let curr=board.get(i,j);
                 if (curr=1){
-                    do Graphics.drawX(x+(i*s/d),y+(j*s/d),s/d,5,true);
+                    do Graphics.drawX(x+(i*s/d),y+(j*s/d),s/d,w,true);
                 }
                 if (curr=-1){
-                    do Graphics.drawO(x+(i*s/d),y+(j*s/d),s/d/2,5,true);
+                    do Graphics.drawO(x+(i*s/d),y+(j*s/d),s/d/2,w,true);
                 }
                 let j=j+1;
             }

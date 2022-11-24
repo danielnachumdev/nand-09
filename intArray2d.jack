@@ -25,15 +25,15 @@ class intArray2d{
     }
 
     method int get ( int row, int col ) {
-        var Array curr_row;
-        let curr_row = data[col];
-        return curr_row[row];
+        var Array curr_col;
+        let curr_col = data[col];
+        return curr_col[row];
     }
 
     method void set ( int row, int col, int value ) {
-        var Array curr_row;
-        let curr_row=data[col];
-        let curr_row[row]=value;
+        var Array curr_col;
+        let curr_col=data[col];
+        let curr_col[row]=value;
         return;
     }
 

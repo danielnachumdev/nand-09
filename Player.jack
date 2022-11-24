@@ -23,9 +23,9 @@ class Player{
         let j = Utils.stringIntAt(coordinates,2);
         while (~(board.set(i,j,value))){
             //clear top left for error message        
-            do Screen.setColor(false);
+            do WindowController.setColor(false);
             do Screen.drawRectangle(0,0,500,32);
-            do Output.moveCursor(0,0);
+            do WindowController.moveCursor(0,0);
             //get new input
             do Output.printString("Those coordinates are taken ");
             do Output.println();

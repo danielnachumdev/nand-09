@@ -1,0 +1,58 @@
+class WindowController{
+    static boolean color;
+    static int row,col;
+
+    function void setColor(boolean c){
+        let color = c;
+        do Screen.setColor(c);
+        return;
+    }
+
+    function boolean getColor(){
+        return color;
+    }
+
+    function void toggleColor(){
+        do WindowController.setColor(~WindowController.getColor());
+        return;
+    }
+
+    function int getWitdh(){
+        return 510;
+    }
+
+    function int getHeight(){
+        return 254;
+    }
+
+    function int getRow(){
+        return row;
+    }
+    function int getCol(){
+        return col;
+    }
+    function void setRow(int r){
+        let row = r;
+        do Output.moveCursor(row,col);
+        return;
+    }
+    function void setCol(int c){
+        let col = c;
+        do Output.moveCursor(row,col);
+        return;
+    }
+    function void moveCursor(int r,int c){
+        let row = r;
+        let col = c;
+        do Output.moveCursor(row,col);
+        return;
+    }
+    function int maxRow(){
+        // the range is [0,22] inclusive
+        return 22;
+    }
+    function int maxCol(){
+        // the range is [0,63] inclusive
+        return 63;
+    }
+}

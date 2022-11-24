@@ -6,7 +6,7 @@ class Main {
         var int play, size;
         var Player playerX , playerO, winner;
         var Char win_sign;
-        let DEFAULT_SIZE=3;
+        let DEFAULT_SIZE = 3;
         let playerX = Player.new(1);
         let playerO = Player.new(-1);
         let winner = null;
@@ -22,21 +22,28 @@ class Main {
                 let size = DEFAULT_SIZE;
             }
             do Graphics.clear();
-            let game = Game.new(playerX, playerO, size,3) ;
+            let game = Game.new(playerX, playerO, size,3);
             let winner = game.run_game();
-
+            do WindowController.setColor(false);
+            do Screen.drawRectangle(0,0,500,32);
+            do WindowController.moveCursor(0,0);
+            do WindowController.setColor(true);
+            do Output.printString("The game has ended");
+            do Output.println();
             if(~(winner=null)){
-                let win_sign = winner.getSign();
+                do Output.printString("Player '");
+                do Output.printString(winner.getSign());
+                do Output.printString("' won!");
+            } else {
+                do Output.printString("There was a tie!");
             }
-            do Output.printString("Game over ");
-            do Output.printString(win_sign);
-            do Output.printString(" won!");
-            do Output.moveCursor(20,0);
+            do WindowController.moveCursor(20,0);
             do Output.printString("Do you want to play again?");
             do Output.println();
             do Output.printString("press y for YES and n for NO: ");
             let play = Keyboard.readChar();
         }
+        do game.dispose();
         do Graphics.clear();
         do Output.printString("The game has ended.");
         return;
