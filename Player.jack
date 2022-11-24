@@ -16,11 +16,25 @@ class Player{
     method void play_turn(Board board){
         var String coordinates;
         var int i,j;
-        //TODO add input validation check: coordinates.length =3?
+        var int comma;
+        do Output.printString(sign);
+        do Output.printString(" turn:  ");
         let coordinates =  Keyboard.readLine("Enter coordinates in 'row,column' template: ");
         do Output.println();
+        let comma = coordinates.charAt(1) ;
+        //input validation
+        while(~(String.length(coordinates)=3 & comma = 44 )){
+            //clear top left for error message        
+            do WindowController.setColor(false);
+            do Screen.drawRectangle(0,0,500,32);
+            do WindowController.moveCursor(0,0);
+            do Output.printString("Wrong template. Use 'row,column' template ");
+            do Output.println();
+            let coordinates =  Keyboard.readLine("Enter coordinates in 'row,column' template: ");
+        }
         let i = Utils.stringIntAt(coordinates,0);
         let j = Utils.stringIntAt(coordinates,2);
+        
         while (~(board.set(i,j,value))){
             //clear top left for error message        
             do WindowController.setColor(false);
@@ -29,25 +43,36 @@ class Player{
             //get new input
             do Output.printString("Those coordinates are taken ");
             do Output.println();
-            //TODO add input validation check: coordinates.length =3?
             let coordinates =  Keyboard.readLine("choose different cell, ('row,column' template): ");
             let i = Utils.stringIntAt(coordinates,0);
             let j = Utils.stringIntAt(coordinates,2);
             do Output.println();      // New line
+            let comma = coordinates.charAt(1) ;
+                //input validation
+            while(~(String.length(coordinates)=3 & comma = 44 )){
+                    //clear top left for error message        
+                do WindowController.setColor(false);
+                do Screen.drawRectangle(0,0,500,32);
+                do WindowController.moveCursor(0,0);
+                do Output.printString("Wrong template. Use 'row,column' template ");
+                do Output.println();
+                let coordinates =  Keyboard.readLine("Enter coordinates in 'row,column' template: ");
+            }
         }
         //do board.set(i,j,value);
         return;
     }
-
+    //Return the player's sign
     method char getSign(){
         return sign;
     }
-
+    //Return the player's sign's value
     method int getValue(){
         return value;
     }
 
     method void dispose(){
+        do String.dispose(sign);
         do Memory.deAlloc(this);
         return;
     }

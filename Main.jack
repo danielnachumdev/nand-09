@@ -7,22 +7,31 @@ class Main {
         var Player playerX , playerO, winner;
         var Char win_sign;
         var Board board;
+        let X = 1;
+        let O = -1;
         let DEFAULT_SIZE = 3;
-        let playerX = Player.new(1);
-        let playerO = Player.new(-1);
+        // Initialize players
+        let playerX = Player.new(X);
+        let playerO = Player.new(O);
         let winner = null;
         do Output.printString("Welcome to tic-tac-toe!");
         do Output.println();
         do Output.printString("press key to continue...");
         do Keyboard.readChar();
         let play = 89;
-        while(play= 89){
+        while(play= 89){ // Play game
             do Graphics.clear();
             let size =  Keyboard.readInt("Enter number X for a board of size X*X and then press ENTER: ");
+             // limit board size
             if(size < 4){
                 let size = DEFAULT_SIZE;
             }
+            // limit board size
+            if(size > 9){ 
+                let size = DEFAULT_SIZE;
+            }
             do Graphics.clear();
+            //Initialize game
             let game = Game.new(playerX, playerO, size,3);
             let winner = game.run_game();
             do WindowController.setColor(false);
@@ -44,6 +53,7 @@ class Main {
             do Output.printString("press y for YES and n for NO: ");
             let play = Keyboard.readChar();
         }
+        //Games ended. Dealloc memmory
         do game.dispose();
         do Graphics.clear();
         do Output.printString("The game has ended.");
