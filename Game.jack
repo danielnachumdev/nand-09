@@ -58,7 +58,7 @@ class Game{
         var boolean streak;
         let i=0;
         let size = board.getSize();
-        while (i< size) {
+        while (i < size) {
             let streak = true;
             let j=0;
             while(j<size) {
@@ -69,7 +69,7 @@ class Game{
                 let j = j + 1;
             }
             if (streak){
-            do Graphics.drawLine(75,75+(j*50),75+(j*50),50+(i*50)3,true);
+                do Graphics.drawLine(75,75+(j*50),75+(j*50),50+(i*50),3,true);
                 return true;
             }
             let i= i + 1;

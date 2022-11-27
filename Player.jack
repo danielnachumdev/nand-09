@@ -12,54 +12,68 @@ class Player{
         }
         return this;
     }
+    method boolean isTemplateOk(String coordinates){
+        var char comma;
+        var boolean res;
+        let res = String.length(coordinates)=3;
+        if (res){
+            let comma = coordinates.charAt(1) ;
+            let res = res & (comma = 44);
+            let res = res & (coordinates.charAt(0)<58);
+            let res = res & (coordinates.charAt(2)<58);
+        }
+        return res;
+    }
+
+    method Array getValidCoordinates(String startMessage, String errorMessage){
+        var Array res;
+        var String coordinates;
+        let res = Array.new(2);
+        let coordinates = Keyboard.readLine(startMessage);
+        while(~isTemplateOk(coordinates)){
+            //clear top left for error message        
+            do WindowController.setColor(false);
+            do Screen.drawRectangle(0,0,500,32);
+            do WindowController.moveCursor(0,0);
+            do Output.printString(errorMessage);
+            do Output.println();
+            let coordinates =  Keyboard.readLine(startMessage);
+        }
+        let res[0] = Utils.stringIntAt(coordinates,0);
+        let res[1] = Utils.stringIntAt(coordinates,2);
+        return res;
+    }
 
     method void play_turn(Board board){
         var String coordinates;
         var int i,j;
         var int comma;
+        var Array arr;
+        var String startMessage, errorMessage;
+        let startMessage = "Enter coordinates in 'row,column' template: ";
+        let errorMessage = "Wrong template. Use 'row,column' template ";
         do Output.printString(sign);
         do Output.printString(" turn:  ");
-        let coordinates =  Keyboard.readLine("Enter coordinates in 'row,column' template: ");
-        do Output.println();
-        let comma = coordinates.charAt(1) ;
-        //input validation
-        while(~(String.length(coordinates)=3 & comma = 44 & coordinates.charAt(0)<58 & coordinates.charAt(2) <58)){
-            //clear top left for error message        
-            do WindowController.setColor(false);
-            do Screen.drawRectangle(0,0,500,32);
-            do WindowController.moveCursor(0,0);
-            do Output.printString("Wrong template. Use 'row,column' template ");
-            do Output.println();
-            let coordinates =  Keyboard.readLine("Enter coordinates in 'row,column' template: ");
-            let comma = coordinates.charAt(1) ;
-        }
-        let i = Utils.stringIntAt(coordinates,0);
-        let j = Utils.stringIntAt(coordinates,2);
-        
+
+        //do
+        let arr = getValidCoordinates(startMessage,errorMessage);
+        let i = arr[0];
+        let j = arr[1];
+        do arr.dispose();
+        //while
         while (~(board.set(i,j,value))){
             //clear top left for error message        
             do WindowController.setColor(false);
             do Screen.drawRectangle(0,0,500,32);
             do WindowController.moveCursor(0,0);
             //get new input
-            do Output.printString("Those coordinates are taken ");
+            do Output.printString("Those coordinates are taken choose different cell.");
             do Output.println();
-            let coordinates =  Keyboard.readLine("choose different cell, ('row,column' template): ");
-            let i = Utils.stringIntAt(coordinates,0);
-            let j = Utils.stringIntAt(coordinates,2);
-            do Output.println();      // New line
-            let comma = coordinates.charAt(1) ;
-                //input validation
-            while(~(String.length(coordinates)=3 & comma = 44 & coordinates.charAt(0)<58 & coordinates.charAt(2)<58)){
-                    //clear top left for error message        
-                do WindowController.setColor(false);
-                do Screen.drawRectangle(0,0,500,32);
-                do WindowController.moveCursor(0,0);
-                do Output.printString("Wrong template. Use 'row,column' template ");
-                do Output.println();
-                let coordinates =  Keyboard.readLine("Enter coordinates in 'row,column' template: ");
-                let comma = coordinates.charAt(1) ;
-            }
+            //do
+            let arr = getValidCoordinates(startMessage,errorMessage);
+            let i = arr[0];
+            let j = arr[1];
+            do arr.dispose();
         }
         //do board.set(i,j,value);
         return;
