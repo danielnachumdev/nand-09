@@ -23,7 +23,7 @@ class Player{
         do Output.println();
         let comma = coordinates.charAt(1) ;
         //input validation
-        while(~(String.length(coordinates)=3 & comma = 44 )){
+        while(~(String.length(coordinates)=3 & comma = 44 & coordinates.charAt(0)<58 & coordinates.charAt(2) <58)){
             //clear top left for error message        
             do WindowController.setColor(false);
             do Screen.drawRectangle(0,0,500,32);
@@ -31,6 +31,7 @@ class Player{
             do Output.printString("Wrong template. Use 'row,column' template ");
             do Output.println();
             let coordinates =  Keyboard.readLine("Enter coordinates in 'row,column' template: ");
+            let comma = coordinates.charAt(1) ;
         }
         let i = Utils.stringIntAt(coordinates,0);
         let j = Utils.stringIntAt(coordinates,2);
@@ -49,7 +50,7 @@ class Player{
             do Output.println();      // New line
             let comma = coordinates.charAt(1) ;
                 //input validation
-            while(~(String.length(coordinates)=3 & comma = 44 )){
+            while(~(String.length(coordinates)=3 & comma = 44 & coordinates.charAt(0)<58 & coordinates.charAt(2)<58)){
                     //clear top left for error message        
                 do WindowController.setColor(false);
                 do Screen.drawRectangle(0,0,500,32);
@@ -57,6 +58,7 @@ class Player{
                 do Output.printString("Wrong template. Use 'row,column' template ");
                 do Output.println();
                 let coordinates =  Keyboard.readLine("Enter coordinates in 'row,column' template: ");
+                let comma = coordinates.charAt(1) ;
             }
         }
         //do board.set(i,j,value);
