@@ -1,21 +1,26 @@
 class Renderer {
     field Board board;
+    //constructor
     constructor Renderer new(Board _board){
         let board = _board;
         return this;
     }
-
+    //the "main" drawing function to draw the whole game base on top left coordinated and wanted board size
     method void draw(int x, int y, int s){
         var int d,i,j,curr,w;
         var Array data;
+        //initialize constants
         let d = board.getSize();
         let w=3;
+        //draw the tic tac toe grid
         do Graphics.drawG(x,y,s,d,w,true);
+        //foreach cell
         let i=0;
         while (i<d){
             let j=0;
             while(j<d){
                 let curr=board.get(j,i);
+                //draw corrent symbol accordingly in the correct location
                 if (curr=1){
                     do Graphics.drawX(x+(i*s/d),y+(j*s/d),s/d,w,true);
                 }
@@ -28,6 +33,7 @@ class Renderer {
         }
         return;
     }
+    
     method void dispose(){
         do Memory.deAlloc(this);
         return;

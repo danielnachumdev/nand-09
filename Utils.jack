@@ -1,4 +1,5 @@
 class Utils{
+    // return the int value of a specific index from a string
     function int stringIntAt(String s,int i){
         var int res;
         var char c;

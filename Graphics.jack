@@ -1,22 +1,24 @@
 class Graphics{
-
-    function void drawO ( int x, int y, int r, int w , boolean c) {
+    //draw a hollow circle by the specified parameters
+    function void drawO ( int x, int y, int r, int w, boolean c) {
+        var boolean prevColor;
+        let prevColor = WindowController.getColor();
         do Screen.setColor(c);
         do Screen.drawCircle(x+r,y+r,r);
         do Screen.setColor(~c);
         do Screen.drawCircle(x+r,y+r,r-w);
+        do WindowController.setColor(prevColor);
         return;
     }
 
+    //draw an 'X' by the specified parameters
     function void drawX(int x, int y, int s, int w, boolean c){
-        // (x,y): top left coordinates
-        // s: the size
-        // w: width of the lines
         do Graphics.drawLine(x,y,x+s,y+s,w,c);
         do Graphics.drawLine(x,y+s,x+s,y,w,c);
         return;
     }
     
+    //draw a line bfrom (x1,y1) to (x2,y2) with width of w anc color of c
     function void drawLine(int x1, int y1, int x2, int y2, int w, boolean c){
         var int i;
         let i=0;
@@ -28,6 +30,7 @@ class Graphics{
         return;
     }
 
+    //approximatly draws an int in the correct location with moveCursor
     function void drawInt(int x, int y,int v){
         var int r,c;
         let r = WindowController.getRow();
@@ -38,18 +41,18 @@ class Graphics{
         return;
     }
 
-    function void drawStringt(int x, int y,String v){
+     //approximatly draws a string in the correct location with moveCursor
+    function void drawString(int x, int y,String s){
         var int r,c;
         let r = WindowController.getRow();
-        let c =WindowController.getCol();
-        //510/63=8.0952380952380952380952380952381
-        //254/22=11.545454545454545454545454545455
+        let c = WindowController.getCol();
         do WindowController.moveCursor(y*22/254,x*63/510);
-        do Output.printString(v);
+        do Output.printString(s);
         do WindowController.moveCursor(r,c);
         return;
     }
 
+    // draws a grid with top left at (x,y) with total size of 's' where each division is of size 'd' and each line is of width 'w' and color 'c'
     function void drawG(int x, int y, int s, int d, int w, boolean c){
         var int i,p;
         let p=s/d;
@@ -67,6 +70,7 @@ class Graphics{
         return;
     }
 
+    //clears the screen and resets the cursor
     function void clear(){
         do Screen.clearScreen();
         do WindowController.moveCursor(0,0);
